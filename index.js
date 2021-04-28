@@ -1,11 +1,10 @@
 #!/usr/bin/env node -r dotenv/config
-
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
-import { Youtube } from './youtube.js';
+import { YouTube } from './youtube.js';
 
-const youtube = new Youtube(process.env.API_KEY);
+const youtube = new YouTube(process.env.API_KEY);
 
 yargs(hideBin(process.argv))
     .scriptName('youtube')

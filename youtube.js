@@ -4,7 +4,7 @@ import log4js from 'log4js';
 const logger = log4js.getLogger('youtube');
 logger.level = 'all';
 
-export class Youtube {
+export class YouTube {
     /** @type {string} */
     key = '';
     /**
