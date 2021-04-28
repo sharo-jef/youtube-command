@@ -1,0 +1,39 @@
+{
+    "name": "youtube",
+    "version": "1.0.0",
+    "description": "youtube",
+    "bin": {
+        "youtube": "index.js"
+    },
+    "scripts": {
+        "start": "node -r dotenv/config ."
+    },
+    "keywords": [],
+    "author": "sharo_jef",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.12.9",
+        "@babel/eslint-parser": "^7.12.1",
+        "@babel/plugin-proposal-class-properties": "^7.12.1",
+        "@babel/plugin-syntax-top-level-await": "^7.12.1",
+        "@babel/preset-env": "^7.12.1",
+        "@types/node": "^14.14.6",
+        "eslint": "^7.13.0"
+    },
+    "dependencies": {
+        "@babel/plugin-proposal-private-methods": "^7.12.1",
+        "axios": "^0.21.1",
+        "dotenv": "^8.2.0",
+        "log4js": "^6.3.0",
+        "yargs": "^16.2.0"
+    },
+    "exports": {
+        "./": {
+            "default": "./index.js"
+        },
+        "./youtube": {
+            "default": "./youtube.js"
+        }
+    },
+    "type": "module"
+}
