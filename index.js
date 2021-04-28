@@ -5,6 +5,8 @@ import { hideBin } from 'yargs/helpers';
 import { Config } from './config.js';
 import { YouTube } from './youtube.js';
 
+Config.load();
+
 const youtube = new YouTube(process.env.API_KEY);
 
 yargs(hideBin(process.argv))

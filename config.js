@@ -1,12 +1,20 @@
 import { readFileSync, writeFileSync } from 'fs';
 
 export class Config {
+    static load() {
+        Object.assign(process.env, this.read());
+    }
     static saveFromCommand(argv) {
         if (argv.key) {
             this.write(argv.key, argv?.value);
         }
     }
     static read(key) {
+        try {
+            readFileSync('.env');
+        } catch {
+            writeFileSync('.env', '');
+        }
         let data = readFileSync('.env', 'utf-8');
         data = data
             .replace(/#.*\r?\n/, '')
