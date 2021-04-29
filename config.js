@@ -18,7 +18,7 @@ export class Config {
         } catch {
             writeFileSync(`${this.root}/.env`, '');
         }
-        let data = readFileSync('.env', 'utf-8');
+        let data = readFileSync(`${this.root}/.env`, 'utf-8');
         data = data
             .replace(/#.*\r?\n/, '')
             .split(/\r?\n/g)
