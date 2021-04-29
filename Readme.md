@@ -8,7 +8,7 @@
 
 ## Installation
 ```bash
-npm i -g github:sharo-jef/youtube
+npm i -g youtube-command
 ```
 
 ## Configuration
