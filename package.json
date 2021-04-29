@@ -1,10 +1,10 @@
 {
     "name": "youtube-command",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "youtube",
     "main": "./index.js",
     "bin": {
-        "youtube": "./index.js"
+        "youtube": "index.js"
     },
     "scripts": {
         "start": "node ."
