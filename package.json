@@ -1,6 +1,6 @@
 {
     "name": "youtube-command",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "youtube",
     "bin": {
         "youtube": "index.js"
