@@ -5,14 +5,6 @@ const logger = log4js.getLogger('youtube');
 logger.level = 'all';
 
 export class YouTube {
-    /** @type {string} */
-    key = '';
-    /**
-     * @param {string} key api key
-     */
-    constructor(key) {
-        this.key = key;
-    }
     async channel(argv) {
         const config = {
             params: {
@@ -36,7 +28,7 @@ export class YouTube {
         let result = [];
 
         if (config) {
-            config.params.key = this.key;
+            config.params.key = process.env.API_KEY;
             config.params.quotaUser = `${new Date().getTime()}`;
         }
 

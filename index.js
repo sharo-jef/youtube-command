@@ -7,7 +7,7 @@ import { YouTube } from './youtube.js';
 
 Config.load();
 
-const youtube = new YouTube(process.env.API_KEY);
+const youtube = new YouTube();
 
 yargs(hideBin(process.argv))
     .scriptName('youtube')

@@ -5,7 +5,10 @@ import { fileURLToPath } from 'url';
 export class Config {
     static root = dirname(fileURLToPath(import.meta.url));
     static load() {
-        Object.assign(process.env, this.read());
+        Object.assign(process.env, this.read().reduce((acc, cur) => {
+            acc[cur.key] = cur.value;
+            return acc;
+        }, {}));
     }
     static saveFromCommand(argv) {
         if (argv.key) {
