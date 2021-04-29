@@ -28,7 +28,7 @@
         "yargs": "^16.2.0"
     },
     "exports": {
-        "./": {
+        ".": {
             "default": "./index.js"
         },
         "./youtube": {
