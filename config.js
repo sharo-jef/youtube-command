@@ -50,6 +50,6 @@ export class Config {
         data = data
             .map(d => `${d?.key ?? ''}=${d?.value ?? ''}`)
             .join('\n');
-        writeFileSync(`${this.root}.env`, data);
+        writeFileSync(`${this.root}/.env`, data);
     }
 }
