@@ -1,4 +1,4 @@
-#!/usr/bin/env node -r dotenv/config
+#!/usr/bin/env node
 import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
