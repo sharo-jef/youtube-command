@@ -7,7 +7,7 @@ import { YouTube } from './youtube.js';
 
 Config.load();
 
-const youtube = new YouTube();
+const youtube = new YouTube(process.env.API_KEY);
 
 yargs(hideBin(process.argv))
     .scriptName('youtube')
@@ -36,4 +36,16 @@ yargs(hideBin(process.argv))
                 type: 'boolean',
             });
     }, async argv => console.log(JSON.stringify(await youtube.channel(argv))))
+    .command('playlist <id>', 'get playlist data', argv => {
+        return argv
+            .positional('id', {
+                type: 'string',
+                desc: 'playlist id',
+            });
+        // .option('full', {
+        //     alias: ['f'],
+        //     desc: 'return full data',
+        //     type: 'boolean',
+        // });
+    }, async argv => console.log(JSON.stringify(await youtube.playlist(argv))))
     .argv;

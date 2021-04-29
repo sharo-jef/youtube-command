@@ -31,6 +31,23 @@ export class YouTube {
                 return tmp;
             });
     }
+    async playlist(argv) {
+        const config = {
+            params: {
+                playlistId: argv.id,
+                part: 'contentDetails',
+                maxResults: 50,
+            },
+        };
+        const result = await this._getData('https://www.googleapis.com/youtube/v3/playlistItems', config) || [];
+
+        return result
+            .filter(d => d?.contentDetails?.videoId)
+            .map(d => {
+                const tmp = { id: d?.contentDetails?.videoId };
+                return tmp;
+            });
+    }
     async _getData(url, config = {}) {
         let result = [];
 
