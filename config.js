@@ -1,6 +1,9 @@
 import { readFileSync, writeFileSync } from 'fs';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 
 export class Config {
+    static root = dirname(fileURLToPath(import.meta.url));
     static load() {
         Object.assign(process.env, this.read());
     }
@@ -11,9 +14,9 @@ export class Config {
     }
     static read(key) {
         try {
-            readFileSync('.env');
+            readFileSync(`${this.root}/.env`);
         } catch {
-            writeFileSync('.env', '');
+            writeFileSync(`${this.root}/.env`, '');
         }
         let data = readFileSync('.env', 'utf-8');
         data = data
@@ -47,6 +50,6 @@ export class Config {
         data = data
             .map(d => `${d?.key ?? ''}=${d?.value ?? ''}`)
             .join('\n');
-        writeFileSync('.env', data);
+        writeFileSync(`${this.root}.env`, data);
     }
 }
