@@ -9,6 +9,7 @@ import ytdl from 'ytdl-core';
 
 import { YouTube } from './youtube.js';
 
+/** @type {log4js.Logger} */
 let logger;
 
 export class Progress extends EventEmitter {
@@ -43,7 +44,7 @@ export class Progress extends EventEmitter {
             }
         }, 1000);
     }
-    start(id, outdir) {
+    async start(id, outdir) {
         this.audio = ytdl(id, { quality: 'highestaudio' })
             .on('progress', (_, download, total) => {
                 this.progress.audio.current = download;
@@ -65,7 +66,7 @@ export class Progress extends EventEmitter {
             '-map', '0:a',
             '-map', '1:v',
             '-c:v', 'copy',
-            `${outdir}/${id}.mp4`,
+            `${outdir}/${(await ytdl.getInfo(id).catch(error => logger.warn(error)))?.videoDetails?.title?.replace(/\/|:|\\|\*|\?|"|<|>|\|/g, '') || id}.mp4`,
         ], {
             windowsHide: true,
             stdio: [
