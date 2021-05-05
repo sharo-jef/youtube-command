@@ -15,7 +15,7 @@ export class YouTube {
     async channel(argv) {
         const config = {
             params: {
-                channelId: argv.id,
+                channelId: /https?:\/\//g.test(argv.id) ? /channel\/(?<id>[^/?]*)/.exec(argv.id)?.groups?.id : argv.id,
                 part: argv.full ? 'snippet' : 'id',
                 maxResults: 50,
             },
@@ -34,7 +34,7 @@ export class YouTube {
     async playlist(argv) {
         const config = {
             params: {
-                playlistId: argv.id,
+                playlistId: /https?:\/\//g.test(argv.id) ? /list=(?<id>[^&]*)/.exec(argv.id)?.groups?.id : argv.id,
                 part: 'contentDetails',
                 maxResults: 50,
             },

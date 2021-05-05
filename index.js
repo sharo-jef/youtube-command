@@ -14,7 +14,7 @@ let downloader;
 yargs(hideBin(process.argv))
     .scriptName('youtube')
     .locale('en')
-    .demandCommand()
+    .strictCommands()
     .command('config <key> [value]', 'save config', argv => {
         return argv
             .positional('key', {
@@ -26,30 +26,33 @@ yargs(hideBin(process.argv))
                 desc: 'value',
             });
     }, argv => Config.saveFromCommand(argv))
-    .command('channel <id>', 'get channel data', argv => {
+    .command('data', 'get data', argv => {
         return argv
-            .positional('id', {
-                type: 'string',
-                desc: 'channel id',
-            })
-            .option('full', {
-                alias: ['f'],
-                desc: 'return full data',
-                type: 'boolean',
-            });
-    }, async argv => console.log(JSON.stringify(await youtube.channel(argv))))
-    .command('playlist <id>', 'get playlist data', argv => {
-        return argv
-            .positional('id', {
-                type: 'string',
-                desc: 'playlist id',
-            });
-        // .option('full', {
-        //     alias: ['f'],
-        //     desc: 'return full data',
-        //     type: 'boolean',
-        // });
-    }, async argv => console.log(JSON.stringify(await youtube.playlist(argv))))
+            .command('channel <id>', 'get channel data', argv => {
+                return argv
+                    .positional('id', {
+                        type: 'string',
+                        desc: 'channel id',
+                    })
+                    .option('full', {
+                        alias: ['f'],
+                        desc: 'return full data',
+                        type: 'boolean',
+                    });
+            }, async argv => console.log(JSON.stringify(await youtube.channel(argv))))
+            .command('playlist <id>', 'get playlist data', argv => {
+                return argv
+                    .positional('id', {
+                        type: 'string',
+                        desc: 'playlist id',
+                    });
+                // .option('full', {
+                //     alias: ['f'],
+                //     desc: 'return full data',
+                //     type: 'boolean',
+                // });
+            }, async argv => console.log(JSON.stringify(await youtube.playlist(argv))));
+    })
     .command('download <id>', 'download youtube video', argv => {
         return argv
             .positional('id', {
