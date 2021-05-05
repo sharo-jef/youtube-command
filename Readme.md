@@ -25,17 +25,17 @@ youtube config API_KEY foobar
 ### Help
 ```bash
 youtube --help
-youtube channel --help
+youtube data channel --help
 ```
 
 ### Get list of video ids
 ```bash
-youtube channel <channelId>
+youtube data channel <channelId>
 ```
 
 ### Advanced
 ```bash
-youtube channel UC5nfcGkOAm3JwfPvJvzplHg > futaba.json
+youtube data channel UC5nfcGkOAm3JwfPvJvzplHg > futaba.json
 ```
 
 **result**
