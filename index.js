@@ -3,11 +3,13 @@ import yargs from 'yargs';
 import { hideBin } from 'yargs/helpers';
 
 import { Config } from './config.js';
+import { Downloader } from './downloader.js';
 import { YouTube } from './youtube.js';
 
 Config.load();
 
 const youtube = new YouTube(process.env.API_KEY);
+let downloader;
 
 yargs(hideBin(process.argv))
     .scriptName('youtube')
@@ -48,4 +50,29 @@ yargs(hideBin(process.argv))
         //     type: 'boolean',
         // });
     }, async argv => console.log(JSON.stringify(await youtube.playlist(argv))))
+    .command('download <id>', 'download youtube video', argv => {
+        return argv
+            .positional('id', {
+                type: 'string',
+                desc: 'id (or url) of the video',
+            })
+            .option('channel', {
+                alias: ['c'],
+                desc: 'download all videos from the channel',
+                type: 'boolean',
+            })
+            .option('list', {
+                alias: ['l'],
+                desc: 'download all videos from the playlist',
+                type: 'boolean',
+            })
+            .option('outdir', {
+                alias: ['o'],
+                desc: 'set directory for output videos',
+                type: 'string',
+            });
+    }, argv => {
+        downloader = downloader ?? new Downloader(process.env.API_KEY);
+        downloader.download(argv);
+    })
     .argv;
