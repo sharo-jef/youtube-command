@@ -36,6 +36,9 @@
         },
         "./youtube": {
             "default": "./youtube.js"
+        },
+        "./downloader": {
+            "default": "./downloader.js"
         }
     },
     "type": "module"
