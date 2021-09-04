@@ -28,7 +28,7 @@
         "ffmpeg-static": "^4.3.0",
         "log4js": "^6.3.0",
         "yargs": "^16.2.0",
-        "ytdl-core": "^4.7.0"
+        "ytdl-core": "^4.9.1"
     },
     "exports": {
         ".": {
