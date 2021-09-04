@@ -12,6 +12,7 @@ const youtube = new YouTube(process.env.API_KEY);
 let downloader;
 
 yargs(hideBin(process.argv))
+    .version()
     .scriptName('youtube')
     .locale('en')
     .strictCommands()
