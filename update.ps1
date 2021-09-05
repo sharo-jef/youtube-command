@@ -13,7 +13,7 @@ if ($Message -eq '') {
 
 npm i ytdl-core@latest
 
-Write-Output 'ytdl-core: v' $(npm list | Select-String ytdl-core | ForEach-Object { Write-Output ([string]$_).Split('@')[1] })
+Write-Output "ytdl-core: v$(npm list | Select-String ytdl-core | ForEach-Object { Write-Output ([string]$_).Split('@')[1] })"
 
 git add .
 git commit -m $Message
