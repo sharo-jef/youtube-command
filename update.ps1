@@ -21,5 +21,5 @@ git push origin master
 
 $version = (npm version $Type)
 git push origin master
-git push origin "tags/v$version"
+git push origin "tags/$version"
 npm publish ./
